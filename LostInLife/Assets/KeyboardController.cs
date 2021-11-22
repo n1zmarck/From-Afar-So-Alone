@@ -4,42 +4,88 @@ using UnityEngine;
 
 public class KeyboardController : MonoBehaviour
 {
+    public CharacterController controller;
 
-
+    public Transform groundCheck;
+    public float groundDistance = 0.02f;
+    public LayerMask groundmask;
+    bool isGrounded;
+    private float GravSystem = -9.81f;
+    Vector3 velocity;
 
     public Transform Player;
-    private float PlayerMovementFactor = 0.05f;
+    private float PlayerMovementFactor = 12f;
+    private float DefaultMovementFactor = 12f;
+    public float PlayerJumpHeight = 12.4f;
+
+
     // Start is called before the first frame update
 
     [Header("CheatStuff")]
     public GameObject mobTarget;
     public GameObject mobTargetTorso;
-    void Start()
-    {
-        
-    }
 
+
+    float defaultHeight;
+
+    private void Start()
+    {
+        defaultHeight = controller.height;
+    }
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.W))
+
+        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundmask);
+
+        if (isGrounded == true && velocity.y < 0)
         {
-            Player.position += Vector3.forward*PlayerMovementFactor;
-        }else if (Input.GetKey(KeyCode.A))
-        {
-            Player.position += Vector3.left*PlayerMovementFactor;
-        } else if (Input.GetKey(KeyCode.S))
-        {
-            Player.position += Vector3.back*PlayerMovementFactor;
-        } else if (Input.GetKey(KeyCode.D))
-        {
-            Player.position += Vector3.right*PlayerMovementFactor;
-        }else if (Input.GetKey(KeyCode.R) && mobTarget.gameObject.activeInHierarchy == false)
-        {
-            mobTarget.gameObject.SetActive(true);
-            mobTargetTorso.gameObject.SetActive(true);
-            
+            velocity.y = -1f;
         }
+        if (isGrounded == true && Input.GetKey(KeyCode.LeftControl))
+        {
+            controller.height = controller.height / 2;
+            PlayerMovementFactor = 6f;
+        }
+        else if (isGrounded == true && Input.GetKey(KeyCode.Z))
+        {
+            controller.height = controller.height / 4;
+            PlayerMovementFactor = 3f;
+        }
+        else if (isGrounded == true && Input.GetKey(KeyCode.LeftShift))
+        {
+            // sprinting
+            PlayerMovementFactor = 17f;
+        }
+        else
+        {
+            controller.height = defaultHeight;
+            PlayerMovementFactor = DefaultMovementFactor;
+        }
+
+
+        //if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        //{
+        //    velocity.y = Mathf.Sqrt(PlayerJumpHeight * -2f * GravSystem);
+        //}       
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            velocity.y = Mathf.Sqrt(PlayerJumpHeight * -2f * GravSystem);
+        }
+
+
+
+        float x = Input.GetAxis("Horizontal");
+        float z = Input.GetAxis("Vertical");
+
+
+        Vector3 move = transform.right * x + transform.forward * z;
+
+        controller.Move(move* PlayerMovementFactor * Time.deltaTime);
+
+
+        velocity.y += GravSystem * Time.deltaTime;
+        controller.Move(velocity * Time.deltaTime);
 
       
     }

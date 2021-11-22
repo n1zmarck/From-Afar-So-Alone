@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class Controller : MonoBehaviour
 {
-    public float mouseSensitivity = 1000f;
+    public float mouseSensitivity = 1200f;
     private Vector3 LastMousePosition;
     // Start is called before the first frame update
+    
+    //insert weapon script here
+    
 
     private RaycastHit hit;
 
@@ -18,6 +21,8 @@ public class Controller : MonoBehaviour
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        
+        
     }
 
     // Update is called once per frame
@@ -32,24 +37,7 @@ public class Controller : MonoBehaviour
         transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
         playerBody.Rotate(Vector3.up * mouseX);
 
-        if (Input.GetMouseButton(0))
-        {
-            if(Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 1000f))
-            {
-
-                // Then you could find your GO with a specific tag by doing something like:
-                if (hit.collider.tag == "Head")
-                {
-                    Debug.Log("HeadShot!");
-                    hit.collider.transform.parent.gameObject.SetActive(false);
-                }
-                else if (hit.collider.tag == "UpperTorso")
-                {
-                    Debug.Log("ChestHit!");
-                    hit.collider.gameObject.SetActive(false);
-                }
-            }
-        }
+        
     }
 
 
