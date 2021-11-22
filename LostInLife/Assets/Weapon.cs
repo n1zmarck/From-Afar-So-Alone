@@ -5,8 +5,8 @@ public class Weapon : MonoBehaviour
 {
 
     public weaponType currentWeapon;
-    public ParticleSystem particle;
-    public GameObject impactEffect;
+    //public ParticleSystem particle;
+    //public GameObject impactEffect;
 
 
     public enum weaponType
@@ -74,7 +74,7 @@ public class Weapon : MonoBehaviour
 
     void shoot(float range)
     {
-        particle.Play();
+        //particle.Play();
 
         RaycastHit hit;
 
@@ -115,9 +115,9 @@ public class Weapon : MonoBehaviour
             }
 
 
-            GameObject impactGO = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
+           // GameObject impactGO = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
 
-            Destroy(impactGO, 2f);
+           // Destroy(impactGO, 2f);
         }
     }
 }
