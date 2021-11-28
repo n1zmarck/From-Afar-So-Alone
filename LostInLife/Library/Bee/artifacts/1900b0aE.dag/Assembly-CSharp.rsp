@@ -325,12 +325,18 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/VSSettingsProvider.ref.dll"
 "Assets/BrokenVector/LowPolyBrickHouses/Scripts/ModelCustomizer.cs"
-"Assets/Controller.cs"
 "Assets/Desert Environment/Example/AutoMoveAndRotate.cs"
-"Assets/Enemy.cs"
-"Assets/KeyboardController.cs"
-"Assets/Weapon.cs"
-"Assets/WpFab.cs"
+"Assets/MobLook.cs"
+"Assets/MobRun.cs"
+"Assets/mobshoot.cs"
+"Assets/Scripts/AiSensor.cs"
+"Assets/Scripts/Controller.cs"
+"Assets/Scripts/Enemy.cs"
+"Assets/Scripts/EnemyBehaviour.cs"
+"Assets/Scripts/KeyboardController.cs"
+"Assets/Scripts/Weapon.cs"
+"Assets/Scripts/WpFab.cs"
+"Assets/shoot.cs"
 -langversion:8.0
 
 /deterministic
