@@ -3,14 +3,14 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-
+    public float DMRMag, SGMag;
     public weaponType currentWeapon;
     //public ParticleSystem particle;
     //public GameObject impactEffect;
     public GameObject shotgun;
     public GameObject Rifle;
 
-    public AudioSource DMR, SG, punch;
+    public AudioSource DMR, SG;
 
     public enum weaponType
     {
@@ -35,6 +35,12 @@ public class Weapon : MonoBehaviour
         
 
         return 0f;
+    }
+
+    private void Start()
+    {
+        DMRMag = 15f;
+        SGMag = 7f;
     }
 
     // Update is called once per frame
@@ -70,24 +76,39 @@ public class Weapon : MonoBehaviour
 
 
 
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButtonDown(0))
         {
-            shoot(RangeCalc(currentWeapon));
-            Debug.Log("fired");
+            if (currentWeapon == weaponType.AssaultRifle && DMRMag > 0 || currentWeapon == weaponType.Shotgun && SGMag > 0)
+            {
+                shoot(RangeCalc(currentWeapon));
+                Debug.Log("fired");
+            }
+
             
         }
-        else if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButton(1))
         {
             // zoom scope
             Debug.Log("zoomies");
+        }
+
+        if (Input.GetKey(KeyCode.R))
+        {
+            switch (currentWeapon)
+            {
+                case weaponType.AssaultRifle:
+                    DMRMag += 30; break;
+                case weaponType.Shotgun:
+                    SGMag += 7; break;
+                case weaponType.Melee:
+                    break;
+            }
         }
     }
 
     void shoot(float range)
     {
         //particle.Play();
-
-        RaycastHit hit;
 
         if (currentWeapon == weaponType.AssaultRifle)
         {
@@ -99,8 +120,10 @@ public class Weapon : MonoBehaviour
         }
         else if (currentWeapon == weaponType.Melee)
         {
-            punch.Play();
         }
+
+
+        RaycastHit hit;
 
 
         if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, range))
@@ -110,25 +133,22 @@ public class Weapon : MonoBehaviour
             {
                 Debug.Log("HeadShot!");
                 //hit.collider.transform.parent.gameObject.SetActive(false);
-               Enemy enemy = hit.transform.GetComponent<Enemy>();
-                if (enemy != null)
-                {
-                    enemy.TakeDamage(100f);
-                }
-                if (enemy != null && currentWeapon == weaponType.Melee)
-                {
-                    enemy.TakeDamage(15f);
-                }
+                hit.transform.gameObject.GetComponentInParent<Enemy>().TakeDamage(100f); 
+    
+                
+                //if (enemy != null && currentWeapon == weaponType.Melee)
+                //{
+                //    enemy.TakeDamage(15f);
+                //}
             }
-            else if (hit.collider.tag == "UpperTorso")
+            else if (hit.collider.tag == "UpperTorso" || hit.collider.tag == "LowerTorso")
             {
                 Debug.Log("ChestHit!");
                 //hit.collider.gameObject.SetActive(false);
-                Enemy enemy = hit.transform.GetComponent<Enemy>();
-                if (enemy != null)
-                {
+                Enemy enemy = hit.transform.gameObject.GetComponentInParent<Enemy>();
+      
                     enemy.TakeDamage(50f);
-                }
+                
                 if (enemy != null && currentWeapon == weaponType.Melee)
                 {
                     enemy.TakeDamage(15f);
@@ -139,22 +159,20 @@ public class Weapon : MonoBehaviour
             {
                 Debug.Log("LEGS AND KNEES!");
                // hit.collider.gameObject.SetActive(false);
-                Enemy enemy = hit.transform.GetComponent<Enemy>();
-                if (enemy != null)
-                {
-                    enemy.TakeDamage(25f);
-                }
-                if (enemy != null && currentWeapon == weaponType.Melee)
-                {
-                    enemy.TakeDamage(15f);
-                }
+              hit.transform.gameObject.GetComponentInParent<Enemy>().TakeDamage(25f);
+                
+                //if (enemy != null && currentWeapon == weaponType.Melee)
+                //{
+                //    enemy.TakeDamage(15f);
+                //}
 
             }
 
+        
 
            // GameObject impactGO = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
 
-           // Destroy(impactGO, 2f);
+            // Destroy(impactGO, 2f);
         }
     }
 }

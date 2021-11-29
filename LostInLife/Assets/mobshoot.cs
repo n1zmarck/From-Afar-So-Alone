@@ -5,23 +5,38 @@ using UnityEngine;
 public class mobshoot : StateMachineBehaviour
 {
     public GameObject AimHit;
+    public AiSensor sensor;
 
-    // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
-    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    GameObject findPlayer()
     {
-
+        // GameObject FindPlayer;
+        if (this.sensor.objects.Count > 0)
+        {
+            return this.sensor.objects[0];
+        }
+        return null;
     }
+
+    //// OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
+    //override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    //{
+
+    //}
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        // on state update
+        AimHit = findPlayer();
+
+        AimHit.GetComponentInParent<KeyboardController>().gameObject.SetActive(false);
 
     }
-    // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
+    //// OnStateExit is called when a transition ends and the state machine finishes evaluating this state
+    //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    //{
 
-    }
+    //}
 
 
 }

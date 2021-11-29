@@ -10,7 +10,7 @@ public class KeyboardController : MonoBehaviour
     public float groundDistance = 0.02f;
     public LayerMask groundmask;
     bool isGrounded;
-    private float GravSystem = -9.81f;
+    private float GravSystem = -14.81f;
     Vector3 velocity;
 
     public Transform Player;
@@ -20,10 +20,6 @@ public class KeyboardController : MonoBehaviour
 
 
     // Start is called before the first frame update
-
-    [Header("CheatStuff")]
-    public GameObject mobTarget;
-    public GameObject mobTargetTorso;
 
 
     float defaultHeight;
@@ -45,20 +41,22 @@ public class KeyboardController : MonoBehaviour
         if (isGrounded == true && Input.GetKey(KeyCode.LeftControl))
         {
             controller.height = controller.height / 2;
+            controller.center = new Vector3(0,-controller.height,0);
             PlayerMovementFactor = 6f;
         }
-        else if (isGrounded == true && Input.GetKey(KeyCode.Z))
-        {
-            controller.height = controller.height / 4;
-            PlayerMovementFactor = 3f;
-        }
-        else if (isGrounded == true && Input.GetKey(KeyCode.LeftShift))
-        {
-            // sprinting
-            PlayerMovementFactor = 17f;
-        }
+        //else if (isGrounded == true && Input.GetKey(KeyCode.Z))
+        //{
+        //    controller.height = controller.height / 4;
+        //    PlayerMovementFactor = 3f;
+        //}
+        //else if (isGrounded == true && Input.GetKey(KeyCode.LeftShift))
+        //{
+        //    // sprinting
+        //    PlayerMovementFactor = 17f;
+        //}
         else
         {
+            controller.center = new Vector3(0,controller.height,0);
             controller.height = defaultHeight;
             PlayerMovementFactor = DefaultMovementFactor;
         }
@@ -66,7 +64,7 @@ public class KeyboardController : MonoBehaviour
 
         //if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         //{
-        //    velocity.y = Mathf.Sqrt(PlayerJumpHeight * -2f * GravSystem);
+        //    velocity.y = Mathf.Sqrt(PlayerJumpHeight * -2f * GravSystem);o
         //}
         //if (Input.GetKeyDown(KeyCode.Space))
         //{
