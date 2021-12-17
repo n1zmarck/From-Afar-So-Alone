@@ -10,7 +10,7 @@ public class KeyboardController : MonoBehaviour
     public float groundDistance = 0.02f;
     public LayerMask groundmask;
     bool isGrounded;
-    private float GravSystem = -14.81f;
+    private float GravSystem = -3.807f;
     Vector3 velocity;
 
     public Transform Player;
@@ -19,8 +19,6 @@ public class KeyboardController : MonoBehaviour
     public float PlayerJumpHeight = 12.4f;
 
 
-    // Start is called before the first frame update
-
 
     float defaultHeight;
 
@@ -28,7 +26,8 @@ public class KeyboardController : MonoBehaviour
     {
         defaultHeight = controller.height;
     }
-    // Update is called once per frame
+
+
     void Update()
     {
 
@@ -44,34 +43,12 @@ public class KeyboardController : MonoBehaviour
             controller.center = new Vector3(0,-controller.height,0);
             PlayerMovementFactor = 6f;
         }
-        //else if (isGrounded == true && Input.GetKey(KeyCode.Z))
-        //{
-        //    controller.height = controller.height / 4;
-        //    PlayerMovementFactor = 3f;
-        //}
-        //else if (isGrounded == true && Input.GetKey(KeyCode.LeftShift))
-        //{
-        //    // sprinting
-        //    PlayerMovementFactor = 17f;
-        //}
-        else
+        else if (isGrounded == true && Input.GetKeyUp(KeyCode.LeftControl))
         {
             controller.center = new Vector3(0,controller.height,0);
             controller.height = defaultHeight;
             PlayerMovementFactor = DefaultMovementFactor;
         }
-
-
-        //if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
-        //{
-        //    velocity.y = Mathf.Sqrt(PlayerJumpHeight * -2f * GravSystem);o
-        //}
-        //if (Input.GetKeyDown(KeyCode.Space))
-        //{
-        //    velocity.y = Mathf.Sqrt(PlayerJumpHeight * -2f * GravSystem);
-        //}
-
-
 
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");

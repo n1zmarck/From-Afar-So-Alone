@@ -27,7 +27,7 @@ public class mobshoot : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         // on state update
-        AimHit = findPlayer();
+        AimHit = findPlayer(); 
 
         AimHit.GetComponentInParent<KeyboardController>().gameObject.SetActive(false);
 
