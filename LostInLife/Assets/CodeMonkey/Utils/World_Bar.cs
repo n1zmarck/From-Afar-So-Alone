@@ -34,22 +34,9 @@ namespace CodeMonkey.Utils {
             public Color color = Color.black;
         }
 
-        public static World_Bar Create(Vector3 localPosition, Vector3 localScale, Color? backgroundColor, Color barColor, float sizeRatio, Outline outline = null) {
-            return Create(null, localPosition, localScale, backgroundColor, barColor, sizeRatio, 0, outline);
-        }
-
-        public static World_Bar Create(Transform parent, Vector3 localPosition, Vector3 localScale, Color? backgroundColor, Color barColor, float sizeRatio, int sortingOrder, Outline outline = null) {
-            return new World_Bar(parent, localPosition, localScale, backgroundColor, barColor, sizeRatio, sortingOrder, outline);
-        }
-
-        public World_Bar(Transform parent, Vector3 localPosition, Vector3 localScale, Color? backgroundColor, Color barColor, float sizeRatio, int sortingOrder, Outline outline = null) {
-            this.outline = outline;
-            SetupParent(parent, localPosition);
-            if (outline != null) SetupOutline(outline, localScale, sortingOrder - 1);
-            if (backgroundColor != null) SetupBackground((Color)backgroundColor, localScale, sortingOrder);
-            SetupBar(barColor, localScale, sortingOrder + 1);
-            SetSize(sizeRatio);
-        }
+   
+        
+     
 
         private void SetupParent(Transform parent, Vector3 localPosition) {
             gameObject = new GameObject("World_Bar");
@@ -58,23 +45,7 @@ namespace CodeMonkey.Utils {
             transform.localPosition = localPosition;
         }
 
-        private void SetupOutline(Outline outline, Vector3 localScale, int sortingOrder) {
-            UtilsClass.CreateWorldSprite(transform, "Outline", Assets.i.s_White, new Vector3(0,0), localScale + new Vector3(outline.size, outline.size), sortingOrder, outline.color);
-        }
-
-        private void SetupBackground(Color backgroundColor, Vector3 localScale, int sortingOrder) {
-            background = UtilsClass.CreateWorldSprite(transform, "Background", Assets.i.s_White, new Vector3(0,0), localScale, sortingOrder, backgroundColor).transform;
-        }
-
-        private void SetupBar(Color barColor, Vector3 localScale, int sortingOrder) {
-            GameObject barGO = new GameObject("Bar");
-            bar = barGO.transform;
-            bar.SetParent(transform);
-            bar.localPosition = new Vector3(-localScale.x / 2f, 0, 0);
-            bar.localScale = new Vector3(1,1,1);
-            Transform barIn = UtilsClass.CreateWorldSprite(bar, "BarIn", Assets.i.s_White, new Vector3(localScale.x / 2f, 0), localScale, sortingOrder, barColor).transform;
-        }
-
+     
         public void SetLocalScale(Vector3 localScale) {
             // Outline
             if (transform.Find("Outline") != null) {
@@ -126,23 +97,6 @@ namespace CodeMonkey.Utils {
 
         public void Hide() {
             gameObject.SetActive(false);
-        }
-
-        public Button_Sprite AddButton(System.Action ClickFunc, System.Action MouseOverOnceFunc, System.Action MouseOutOnceFunc) {
-            Button_Sprite buttonSprite = gameObject.AddComponent<Button_Sprite>();
-            if (ClickFunc != null)
-                buttonSprite.ClickFunc = ClickFunc;
-            if (MouseOverOnceFunc != null)
-                buttonSprite.MouseOverOnceFunc = MouseOverOnceFunc;
-            if (MouseOutOnceFunc != null)
-                buttonSprite.MouseOutOnceFunc = MouseOutOnceFunc;
-            return buttonSprite;
-        }
-
-        public void DestroySelf() {
-            if (gameObject != null) {
-                Object.Destroy(gameObject);
-            }
         }
 
     }

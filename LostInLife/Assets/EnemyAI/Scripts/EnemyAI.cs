@@ -1,15 +1,4 @@
-﻿/* 
-    ------------------- Code Monkey -------------------
-
-    Thank you for downloading this package
-    I hope you find it useful in your projects
-    If you have any questions let me know
-    Cheers!
-
-               unitycodemonkey.com
-    --------------------------------------------------
- */
- 
+﻿
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -26,8 +15,8 @@ public class EnemyAI : MonoBehaviour {
         ShootingTarget,
     }
 
- //   private IAimShootAnims aimShootAnims;
-    private EnemyPathfindingMovement pathfindingMovement;
+    //   private IAimShootAnims aimShootAnims;
+    EnemyPathfindingMovement pathfindingMovement;
     private Vector3 startingPosition;
     private Vector3 roamPosition;
     private float nextShootTime;
@@ -48,7 +37,7 @@ public class EnemyAI : MonoBehaviour {
         switch (state) {
         default:
         case State.Roaming:
-            pathfindingMovement.MoveToTimer(roamPosition);
+            //pathfindingMovement.MoveToTimer(roamPosition);
 
             float reachedPositionDistance = 10f;
             if (Vector3.Distance(transform.position, roamPosition) < reachedPositionDistance) {
@@ -59,7 +48,7 @@ public class EnemyAI : MonoBehaviour {
             FindTarget();
             break;
         case State.ChaseTarget:
-            pathfindingMovement.MoveToTimer(Player.transform.position);
+            //pathfindingMovement.MoveToTimer(Player.transform.position);
 
            // aimShootAnims.SetAimTarget(Player.Instance.GetPosition());
 
@@ -67,7 +56,7 @@ public class EnemyAI : MonoBehaviour {
             if (Vector3.Distance(transform.position, Player.transform.position) < attackRange) {
                 // Target within attack range
                 if (Time.time > nextShootTime) {
-                    pathfindingMovement.StopMoving();
+                   // pathfindingMovement.StopMoving();
                     state = State.ShootingTarget;
                     float fireRate = .15f;
                     nextShootTime = Time.time + fireRate;
@@ -87,7 +76,7 @@ public class EnemyAI : MonoBehaviour {
     }
 
     private Vector3 GetRoamingPosition() {
-        return startingPosition + UtilsClass.GetRandomDir() * Random.Range(10f, 70f);
+        return startingPosition + throwRandom() * Random.Range(10f, 70f);
     }
 
     private void FindTarget() {
@@ -98,4 +87,9 @@ public class EnemyAI : MonoBehaviour {
         }
     }
 
+
+    public Vector3 throwRandom()
+    {
+        return new Vector3(Random.Range(-1f, 1f),0, Random.Range(-1f, 1f)).normalized;
+    }
 }
