@@ -16,21 +16,23 @@ public class EnemyAI : MonoBehaviour {
     }
 
     //   private IAimShootAnims aimShootAnims;
-    EnemyPathfindingMovement pathfindingMovement;
+    //EnemyPathfindingMovement pathfindingMovement;
+    EnemyNavMesh navMesh;
     private Vector3 startingPosition;
     private Vector3 roamPosition;
     private float nextShootTime;
     private State state;
 
     private void Awake() {
-        pathfindingMovement = GetComponent<EnemyPathfindingMovement>();
+        //pathfindingMovement = GetComponent<EnemyPathfindingMovement>();
+        navMesh = GetComponent<EnemyNavMesh>();
        // aimShootAnims = GetComponent<IAimShootAnims>();
         state = State.Roaming;
     }
 
     private void Start() {
         startingPosition = transform.position;
-        roamPosition = GetRoamingPosition();
+        navMesh.SetDestination(GetRoamingPosition());
     }
 
     private void Update() {
@@ -48,15 +50,17 @@ public class EnemyAI : MonoBehaviour {
             FindTarget();
             break;
         case State.ChaseTarget:
-            //pathfindingMovement.MoveToTimer(Player.transform.position);
-
+                //pathfindingMovement.MoveToTimer(Player.transform.position);
+                navMesh.SetDestination(Player.transform.position);
            // aimShootAnims.SetAimTarget(Player.Instance.GetPosition());
+
 
             float attackRange = 30f;
             if (Vector3.Distance(transform.position, Player.transform.position) < attackRange) {
                 // Target within attack range
                 if (Time.time > nextShootTime) {
-                   // pathfindingMovement.StopMoving();
+                        // pathfindingMovement.StopMoving();
+                        navMesh.stopMovingAgent();
                     state = State.ShootingTarget;
                     float fireRate = .15f;
                     nextShootTime = Time.time + fireRate;
