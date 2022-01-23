@@ -30,7 +30,6 @@ public class EnemyNavMesh : MonoBehaviour
     {
         if (stopMoving == false)
         {
-
             navAgent.destination = moveDestination.position;
         }
     }

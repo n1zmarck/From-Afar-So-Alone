@@ -10773,6 +10773,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 966265384571472547, guid: 230e23bfa24a2c74aa5a7979a4e042b2, type: 3}
+      propertyPath: pausemenu
+      value: 
+      objectReference: {fileID: 218917615}
+    - target: {fileID: 966265384571472547, guid: 230e23bfa24a2c74aa5a7979a4e042b2, type: 3}
+      propertyPath: settingsMenu
+      value: 
+      objectReference: {fileID: 475033479}
     - target: {fileID: 3113365393951688196, guid: 230e23bfa24a2c74aa5a7979a4e042b2, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -10871,23 +10879,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 230e23bfa24a2c74aa5a7979a4e042b2, type: 3}
---- !u!1 &7254564084011896481 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7254564084127835089, guid: 230e23bfa24a2c74aa5a7979a4e042b2, type: 3}
-  m_PrefabInstance: {fileID: 7254564084011896480}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &7254564084011896482
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7254564084011896481}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6f1bdc8318178c4fad0b4909945ddfa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isGamePaused: 0
-  pausemenu: {fileID: 218917615}
-  settingsMenu: {fileID: 475033479}

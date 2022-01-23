@@ -45,12 +45,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e931e42551d03104bb131341ea69c1d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DMRMag: 0
+  SGMag: 0
   currentWeapon: 0
   shotgun: {fileID: 0}
   Rifle: {fileID: 0}
   DMR: {fileID: 0}
   SG: {fileID: 0}
-  punch: {fileID: 0}
 --- !u!1 &7254564084127835089
 GameObject:
   m_ObjectHideFlags: 0
@@ -64,6 +65,7 @@ GameObject:
   - component: {fileID: 7254564084127835090}
   - component: {fileID: 7254564084127835093}
   - component: {fileID: 7254564084127835094}
+  - component: {fileID: 966265384571472547}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -171,8 +173,21 @@ MonoBehaviour:
     m_Bits: 8
   Player: {fileID: 7254564085056136385}
   PlayerJumpHeight: 2.4
-  mobTarget: {fileID: 0}
-  mobTargetTorso: {fileID: 0}
+--- !u!114 &966265384571472547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7254564084127835089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6f1bdc8318178c4fad0b4909945ddfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isGamePaused: 0
+  pausemenu: {fileID: 0}
+  settingsMenu: {fileID: 0}
 --- !u!1 &7254564085032269315
 GameObject:
   m_ObjectHideFlags: 0
