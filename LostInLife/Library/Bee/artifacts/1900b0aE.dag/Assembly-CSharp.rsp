@@ -340,6 +340,7 @@
 "Assets/Scripts/EnemyNavMesh.cs"
 "Assets/Scripts/EnemyPathfindingMovement.cs"
 "Assets/Scripts/KeyboardController.cs"
+"Assets/Scripts/MainMenu.cs"
 "Assets/Scripts/PauseMenu.cs"
 "Assets/Scripts/SettingsMenu.cs"
 "Assets/Scripts/Weapon.cs"
