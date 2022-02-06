@@ -8,23 +8,27 @@ public class MainMenu : MonoBehaviour
 {
 
     public Button[] buttons;
+    public Text newgameorContgame;
     // add buttons into array
 
     private Ray ray;
 
-    void ExitGame()
+   public void ExitGame()
     {
         Application.Quit();
     }
 
-    void StartGame()
+    public void StartGame()
     {
         SceneManager.LoadScene("SampleScene");
     }
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (PlayerPrefs.GetFloat("CurrentPlayerLevel",-1) > -1)
+        {
+            newgameorContgame.text = "New Game";
+        }
 
 
     }
@@ -33,9 +37,15 @@ public class MainMenu : MonoBehaviour
     void Update()
     {
         RaycastHit hit;
-        if ()
+        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity))
         {
+            if (hit.collider == true )
+            {
+                foreach (var item in buttons)
+                {
 
+                }
+            }
         }
     }
 }
