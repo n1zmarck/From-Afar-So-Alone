@@ -27,10 +27,12 @@ public class SettingsMenu : MonoBehaviour
     public void SEvolChange(float val)
     {
         PlayerPrefs.SetFloat("SEvol", val);
+        PlayerPrefs.Save();
     }
     public void BGMvolChange(float val)
     {
         PlayerPrefs.SetFloat("BGMvol", val);
+        PlayerPrefs.Save();
     }
 
 }

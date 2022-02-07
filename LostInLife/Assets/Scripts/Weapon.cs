@@ -41,6 +41,9 @@ public class Weapon : MonoBehaviour
     {
         DMRMag = 15f;
         SGMag = 7f;
+        DMR.volume = (PlayerPrefs.GetFloat("SEvol", 1));
+        SG.volume = (PlayerPrefs.GetFloat("SEvol", 1));
+
     }
 
     // Update is called once per frame

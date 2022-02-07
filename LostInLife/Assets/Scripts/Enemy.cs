@@ -10,30 +10,26 @@ public class Enemy : MonoBehaviour
         health -= amount;
     }
 
+    public float getSpeed (float input)
+    {
+        if (health < 100 && health > 50)
+        {
+            float temp1 = health / 100;
+            float temp2 = input * temp1;
+            return temp2;
+        }
+        else if (health <50)
+        {
+            return 0.0f;
+        }
+        return input;
+    }
+
 
     public void Update()
     {
-        if (health <= 0)
-        {
-            //Die();
-            this.gameObject.transform.gameObject.SetActive(false);
-            Destroy(this.gameObject.transform.gameObject);
 
-        }
-        else if (health == 75f)
-        {
-            
-        }
-        else if (health == 50f)
-        {
-            //force enemny to stop moving and lie on the ground but still allowed to shoot
-        }
     }
 
-    void Die()
-    {
-        
-        Destroy(gameObject);
-        //Destroy(this.gameObject);
-    }
+
 }
