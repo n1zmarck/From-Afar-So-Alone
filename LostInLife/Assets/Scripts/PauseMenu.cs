@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Serialization;
+using UnityEngine.SceneManagement;
+using System.IO;
+using System.Threading.Tasks;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -17,16 +21,30 @@ public class PauseMenu : MonoBehaviour
         isGamePaused = false;
     }
 
+    public void continueGame()
+    {
+        isGamePaused = !isGamePaused;
+        pausemenu.gameObject.SetActive(!pausemenu.isActiveAndEnabled);
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && settingsMenu.gameObject.activeInHierarchy == false)
         {
             isGamePaused = !isGamePaused;
             pausemenu.gameObject.SetActive(!pausemenu.isActiveAndEnabled);
         }
     }
 
+    public void returntoMainmenu()
+    {
+        
+        
+        SceneManager.LoadSceneAsync("mainmenu");
+  
+
+    }
 
     public void startSettings ()
     {

@@ -6,11 +6,12 @@ public class EnemyManager : MonoBehaviour
 {
     public List<EnemyBody> enemyBodies;
     private int numberofBodiesinlevel = 0;
+    public Transform playerCurrentPos;
     // Start is called before the first frame update
     void Awake()
     {
         //enemyBodies.Add(FindObjectOfType<EnemyBody>);
-
+        playerCurrentPos = GetComponent<Transform>();
         numberofBodiesinlevel = enemyBodies.Count;
     }
 
@@ -25,6 +26,7 @@ public class EnemyManager : MonoBehaviour
                 enemyBodies.Remove(enemy);
             }
             //if close to player distance and facing them, switch state to chase and attack
+
             //set random interval and play random voiceLine
         }
     }
