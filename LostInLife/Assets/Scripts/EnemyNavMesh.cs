@@ -9,7 +9,8 @@ public class EnemyNavMesh : MonoBehaviour
 
     private NavMeshAgent navAgent;
     private bool stopMoving = false;
-    private Enemy health;
+    private Enemy self;
+
     public void stopMovingAgent()
     {
         stopMoving = true;
@@ -30,7 +31,7 @@ public class EnemyNavMesh : MonoBehaviour
     {
         if (stopMoving == false)
         {
-            navAgent.speed = health.getSpeed(navAgent.speed);
+            navAgent.speed = self.getSpeed(navAgent.speed);
             navAgent.destination = moveDestination.position;
             
         }
