@@ -300,6 +300,8 @@
 "Assets/Scripts/Controller.cs"
 "Assets/Scripts/Enemy.cs"
 "Assets/Scripts/EnemyBehaviour.cs"
+"Assets/Scripts/EnemyBody.cs"
+"Assets/Scripts/EnemyManager.cs"
 "Assets/Scripts/EnemyNavMesh.cs"
 "Assets/Scripts/EnemyPathfindingMovement.cs"
 "Assets/Scripts/KeyboardController.cs"
