@@ -17,7 +17,7 @@ public class EnemyAI : MonoBehaviour {
 
     //   private IAimShootAnims aimShootAnims;
     //EnemyPathfindingMovement pathfindingMovement;
-    EnemyNavMesh navMesh;
+    public EnemyNavMesh navMesh;
     private Vector3 startingPosition;
     private Vector3 roamPosition;
     private float nextShootTime;
@@ -45,6 +45,7 @@ public class EnemyAI : MonoBehaviour {
             if (Vector3.Distance(transform.position, roamPosition) < reachedPositionDistance) {
                 // Reached Roam Position
                 roamPosition = GetRoamingPosition();
+                    navMesh.SetDestination(roamPosition);
             }
 
             FindTarget();

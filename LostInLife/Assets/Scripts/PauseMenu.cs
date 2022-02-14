@@ -35,6 +35,11 @@ public class PauseMenu : MonoBehaviour
             isGamePaused = !isGamePaused;
             pausemenu.gameObject.SetActive(!pausemenu.isActiveAndEnabled);
         }
+        else if (Input.GetKeyDown(KeyCode.Escape) && settingsMenu.gameObject.activeInHierarchy == true)
+        {
+            settingsMenu.gameObject.SetActive(false);
+            pausemenu.gameObject.SetActive(true);
+        }
     }
 
     public void returntoMainmenu()
