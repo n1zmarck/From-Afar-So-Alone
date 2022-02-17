@@ -49,19 +49,22 @@ public class KeyboardController : MonoBehaviour
             controller.height = defaultHeight;
             PlayerMovementFactor = DefaultMovementFactor;
         }
-
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
-
-
-        Vector3 move = transform.right * x + transform.forward * z;
-
-        controller.Move(move* PlayerMovementFactor * Time.deltaTime);
+        while (isGrounded == true)
+        {
+            float x = Input.GetAxis("Horizontal");
+            float z = Input.GetAxis("Vertical");
 
 
-        velocity.y += GravSystem * Time.deltaTime;
-        controller.Move(velocity * Time.deltaTime);
+            Vector3 move = Player.right * x + Player.forward * z;
 
-      
+            controller.Move(move * PlayerMovementFactor * Time.deltaTime);
+
+
+            velocity.y += GravSystem * Time.deltaTime;
+            controller.Move(velocity * Time.deltaTime);
+
+        }
+
+
     }
 }

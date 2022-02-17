@@ -22,7 +22,9 @@ public class EnemyManager : MonoBehaviour
         {
             if (enemy.enemy.health <= 0)
             {
-                Destroy(enemy.transform.gameObject);
+                Destroy(enemy.transform.parent.gameObject);
+                //push force for ragdoll
+
                 enemyBodies.Remove(enemy);
             }
             //if close to player distance and facing them, switch state to chase and attack

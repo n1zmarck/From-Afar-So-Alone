@@ -4,6 +4,8 @@ ScriptsOnlyBuild:
     - Controller
     - Enemy
     - EnemyAI
+    - EnemyBody
+    - EnemyManager
     - EnemyNavMesh
     - KeyboardController
     - MainMenu
@@ -59,26 +61,24 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
-    - Class: 89
-      Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1658}
+      Script: {instanceID: 1662}
     - Class: 114
-      Script: {instanceID: 2680}
+      Script: {instanceID: 2684}
     - Class: 114
-      Script: {instanceID: 2894}
+      Script: {instanceID: 2898}
     - Class: 114
-      Script: {instanceID: 3164}
+      Script: {instanceID: 3168}
     - Class: 114
-      Script: {instanceID: 5410}
+      Script: {instanceID: 5414}
     - Class: 114
-      Script: {instanceID: 5710}
+      Script: {instanceID: 5714}
     - Class: 114
-      Script: {instanceID: 6098}
+      Script: {instanceID: 6102}
     - Class: 114
-      Script: {instanceID: 6200}
+      Script: {instanceID: 6204}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -132,6 +132,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 83
       Script: {instanceID: 0}
+    - Class: 89
+      Script: {instanceID: 0}
     - Class: 90
       Script: {instanceID: 0}
     - Class: 91
@@ -143,45 +145,49 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1658}
+      Script: {instanceID: 1662}
     - Class: 114
-      Script: {instanceID: 1664}
+      Script: {instanceID: 1668}
     - Class: 114
-      Script: {instanceID: 1708}
+      Script: {instanceID: 1712}
     - Class: 114
-      Script: {instanceID: 1788}
+      Script: {instanceID: 1792}
     - Class: 114
-      Script: {instanceID: 2384}
+      Script: {instanceID: 2388}
     - Class: 114
-      Script: {instanceID: 2596}
+      Script: {instanceID: 2600}
     - Class: 114
-      Script: {instanceID: 2680}
+      Script: {instanceID: 2684}
     - Class: 114
-      Script: {instanceID: 2722}
+      Script: {instanceID: 2726}
     - Class: 114
-      Script: {instanceID: 2894}
+      Script: {instanceID: 2898}
     - Class: 114
-      Script: {instanceID: 3154}
+      Script: {instanceID: 3158}
     - Class: 114
-      Script: {instanceID: 3164}
+      Script: {instanceID: 3168}
     - Class: 114
-      Script: {instanceID: 5068}
+      Script: {instanceID: 5072}
     - Class: 114
-      Script: {instanceID: 5088}
+      Script: {instanceID: 5092}
     - Class: 114
-      Script: {instanceID: 5410}
+      Script: {instanceID: 5128}
     - Class: 114
-      Script: {instanceID: 5706}
+      Script: {instanceID: 5188}
+    - Class: 114
+      Script: {instanceID: 5414}
     - Class: 114
       Script: {instanceID: 5710}
     - Class: 114
-      Script: {instanceID: 6200}
+      Script: {instanceID: 5714}
     - Class: 114
-      Script: {instanceID: 6556}
+      Script: {instanceID: 6204}
     - Class: 114
-      Script: {instanceID: 7010}
+      Script: {instanceID: 6560}
     - Class: 114
-      Script: {instanceID: 7700}
+      Script: {instanceID: 7014}
+    - Class: 114
+      Script: {instanceID: 7704}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -221,7 +227,7 @@ ScriptsOnlyBuild:
     className: Image
   - hash:
       serializedVersion: 2
-      Hash: 655675a941ea756088027703b43352a4
+      Hash: 580f75ae23498506fa6e8a9b18d1fbd8
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Controller

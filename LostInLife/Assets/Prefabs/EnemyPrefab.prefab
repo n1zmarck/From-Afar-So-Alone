@@ -367,6 +367,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveDestination: {fileID: 0}
+--- !u!114 &3689851749929066249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5215102627352822217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8adea395d83378a4db05118aac5d66d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyBodies: []
+  playerCurrentPos: {fileID: 7254564085056136385, guid: 230e23bfa24a2c74aa5a7979a4e042b2, type: 3}
+  enemy: {fileID: 7271112718462837457}
+  enemynavmesh: {fileID: 3071882357442135337}
+  body: {fileID: 5215102627352822217}
+  manager: {fileID: 1296826126892585034, guid: 5146c78dd601b8442a24606602294b0b, type: 3}
+  currentPos: {fileID: 5215102627353058729}
 --- !u!114 &4794323126382575700
 MonoBehaviour:
   m_ObjectHideFlags: 0
