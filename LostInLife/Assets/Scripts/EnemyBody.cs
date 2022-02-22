@@ -9,6 +9,7 @@ public class EnemyBody : EnemyManager
     public GameObject body;
     public EnemyManager manager;
     public Transform currentPos;
+    public GameObject DestinationBeacon;
 
     private Vector3 startpos;
     private Vector3 roamPos;
@@ -29,23 +30,21 @@ public class EnemyBody : EnemyManager
         GetComponent<Enemy>();
         GetComponent<EnemyNavMesh>();
         GetComponent<EnemyManager>();
+        
         body = this.transform.gameObject;
+        DestinationBeacon.transform.position = currentPos.position;
     }
 
     private void Start()
     {
         manager.enemyBodies.Add(this);
         startpos = this.transform.position;
-        enemynavmesh.SetDestination(getRoamingPos());
+        //enemynavmesh.SetDestination(getRoamingPos());
     }
 
     private void Update()
     {
-        currentPos = this.transform;
-        if (currentPos = enemynavmesh.moveDestination)
-        {
-            enemynavmesh.SetDestination(getRoamingPos());
-        }
+
     }
 
 }

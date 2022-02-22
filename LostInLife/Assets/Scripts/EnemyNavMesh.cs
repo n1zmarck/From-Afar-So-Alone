@@ -7,7 +7,8 @@ public class EnemyNavMesh : MonoBehaviour
 {
     [SerializeField] public Transform moveDestination;
 
-    private NavMeshAgent navAgent;
+    public NavMeshAgent navAgent;
+    public float speed;
     private bool stopMoving = false;
     private Enemy self;
 
@@ -33,6 +34,7 @@ public class EnemyNavMesh : MonoBehaviour
         {
             navAgent.speed = self.getSpeed(navAgent.speed);
             navAgent.destination = moveDestination.position;
+
             
         }
     }

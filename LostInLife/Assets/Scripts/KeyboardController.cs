@@ -49,8 +49,7 @@ public class KeyboardController : MonoBehaviour
             controller.height = defaultHeight;
             PlayerMovementFactor = DefaultMovementFactor;
         }
-        while (isGrounded == true)
-        {
+        
             float x = Input.GetAxis("Horizontal");
             float z = Input.GetAxis("Vertical");
 
@@ -58,12 +57,12 @@ public class KeyboardController : MonoBehaviour
             Vector3 move = Player.right * x + Player.forward * z;
 
             controller.Move(move * PlayerMovementFactor * Time.deltaTime);
-
+            
 
             velocity.y += GravSystem * Time.deltaTime;
-            controller.Move(velocity * Time.deltaTime);
+            //controller.Move(velocity * Time.deltaTime);
 
-        }
+        
 
 
     }

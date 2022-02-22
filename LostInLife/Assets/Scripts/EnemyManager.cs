@@ -15,6 +15,14 @@ public class EnemyManager : MonoBehaviour
         numberofBodiesinlevel = enemyBodies.Count;
     }
 
+    public Vector3 getRoamingPos(Vector3 startpos)
+    {
+        return startpos + GetRandomdirec() * Random.Range(10f, 90f);
+    }
+    public Vector3 GetRandomdirec()
+    {
+        return new Vector3(UnityEngine.Random.Range(-1f, 1f), 0, UnityEngine.Random.Range(-1f, 1f)).normalized;
+    }
     // Update is called once per frame
     void Update()
     {
@@ -22,14 +30,29 @@ public class EnemyManager : MonoBehaviour
         {
             if (enemy.enemy.health <= 0)
             {
-                Destroy(enemy.transform.parent.gameObject);
+                Debug.Log("Enemy Killed and should despawn");
+
+                Destroy(enemy.transform.gameObject);
                 //push force for ragdoll
 
                 enemyBodies.Remove(enemy);
             }
             //if close to player distance and facing them, switch state to chase and attack
-
+            enemy.currentPos = enemy.transform;
+            if (enemy.currentPos = enemy.enemynavmesh.moveDestination)
+            {
+                enemy.enemynavmesh.SetDestination(getRoamingPos(enemy.currentPos.position));
+            }
+            if (enemy.enemynavmesh.moveDestination == null)
+            {
+                enemy.DestinationBeacon.transform.position = getRoamingPos(enemy.currentPos.position);
+                enemy.enemynavmesh.SetDestination(getRoamingPos(enemy.currentPos.position));
+                enemy.enemynavmesh.navAgent.speed = (enemy.enemy.getSpeed(enemy.enemy.health));
+            }
             //set random interval and play random voiceLine
+
+
+            //debugtool
         }
     }
 }

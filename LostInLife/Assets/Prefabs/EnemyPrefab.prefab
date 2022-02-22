@@ -367,6 +367,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveDestination: {fileID: 0}
+  navAgent: {fileID: 1470383920801564720}
+  speed: 50
 --- !u!114 &3689851749929066249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -386,6 +388,7 @@ MonoBehaviour:
   body: {fileID: 5215102627352822217}
   manager: {fileID: 1296826126892585034, guid: 5146c78dd601b8442a24606602294b0b, type: 3}
   currentPos: {fileID: 5215102627353058729}
+  DestinationBeacon: {fileID: 5576084116105324593}
 --- !u!114 &4794323126382575700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -427,6 +430,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+--- !u!1 &5576084116105324593
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5682173267654218345}
+  m_Layer: 0
+  m_Name: Beacon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5682173267654218345
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5576084116105324593}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.11, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5215102627353058729}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &5215102627352921877
 PrefabInstance:
   m_ObjectHideFlags: 0
