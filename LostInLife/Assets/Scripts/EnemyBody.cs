@@ -10,6 +10,7 @@ public class EnemyBody : EnemyManager
     public EnemyManager manager;
     public Transform currentPos;
     public GameObject DestinationBeacon;
+    public bool destinationSet;
 
     private Vector3 startpos;
     private Vector3 roamPos;
@@ -32,7 +33,8 @@ public class EnemyBody : EnemyManager
         GetComponent<EnemyManager>();
         
         body = this.transform.gameObject;
-        DestinationBeacon.transform.position = currentPos.position;
+        //DestinationBeacon.transform.position = currentPos.position;
+
     }
 
     private void Start()
@@ -40,6 +42,7 @@ public class EnemyBody : EnemyManager
         manager.enemyBodies.Add(this);
         startpos = this.transform.position;
         //enemynavmesh.SetDestination(getRoamingPos());
+        destinationSet = false;
     }
 
     private void Update()

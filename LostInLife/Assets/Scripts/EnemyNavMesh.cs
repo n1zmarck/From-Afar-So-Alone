@@ -34,8 +34,6 @@ public class EnemyNavMesh : MonoBehaviour
         {
             navAgent.speed = self.getSpeed(navAgent.speed);
             navAgent.destination = moveDestination.position;
-
-            
         }
     }
 }

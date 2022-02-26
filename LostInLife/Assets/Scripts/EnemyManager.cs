@@ -17,7 +17,7 @@ public class EnemyManager : MonoBehaviour
 
     public Vector3 getRoamingPos(Vector3 startpos)
     {
-        return startpos + GetRandomdirec() * Random.Range(10f, 90f);
+        return startpos + GetRandomdirec() * Random.Range(10f, 30f);
     }
     public Vector3 GetRandomdirec()
     {
@@ -39,16 +39,19 @@ public class EnemyManager : MonoBehaviour
             }
             //if close to player distance and facing them, switch state to chase and attack
             enemy.currentPos = enemy.transform;
-            if (enemy.currentPos = enemy.enemynavmesh.moveDestination)
+            if (enemy.currentPos == enemy.enemynavmesh.moveDestination && enemy.destinationSet == false)
             {
-                enemy.enemynavmesh.SetDestination(getRoamingPos(enemy.currentPos.position));
+                Vector3 temp = getRoamingPos(enemy.currentPos.position);
+                Debug.Log(temp);
+                enemy.enemynavmesh.SetDestination(temp);
+
             }
-            if (enemy.enemynavmesh.moveDestination == null)
-            {
-                enemy.DestinationBeacon.transform.position = getRoamingPos(enemy.currentPos.position);
-                enemy.enemynavmesh.SetDestination(getRoamingPos(enemy.currentPos.position));
-                enemy.enemynavmesh.navAgent.speed = (enemy.enemy.getSpeed(enemy.enemy.health));
-            }
+            //if (enemy.enemynavmesh.moveDestination == null)
+            //{
+            //    enemy.DestinationBeacon.transform.position = getRoamingPos(enemy.currentPos.position);
+            //    enemy.enemynavmesh.SetDestination(getRoamingPos(enemy.currentPos.position));
+            //    enemy.enemynavmesh.navAgent.speed = (enemy.enemy.getSpeed(enemy.enemy.health));
+            //}
             //set random interval and play random voiceLine
 
 
