@@ -16,7 +16,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     private Vector3 getRoamingPos()
     {
-      return startpos + GetRandomdirec() * Random.Range(10f, 90f);
+      return startpos + GetRandomdirec() * Random.Range(1f, 10f);
     }
 
     void Start()

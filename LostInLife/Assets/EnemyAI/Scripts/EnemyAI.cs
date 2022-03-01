@@ -9,7 +9,7 @@ public class EnemyAI : MonoBehaviour {
 
     public GameObject Player;
 
-    private enum State {
+    public enum State {
         Roaming,
         ChaseTarget,
         ShootingTarget,
@@ -21,7 +21,7 @@ public class EnemyAI : MonoBehaviour {
     private Vector3 startingPosition;
     private Vector3 roamPosition;
     private float nextShootTime;
-    private State state;
+    public State state;
 
     private void Awake() {
         //pathfindingMovement = GetComponent<EnemyPathfindingMovement>();

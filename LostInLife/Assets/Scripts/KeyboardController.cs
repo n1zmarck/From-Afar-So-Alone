@@ -17,6 +17,7 @@ public class KeyboardController : MonoBehaviour
     private float PlayerMovementFactor = 12f;
     private float DefaultMovementFactor = 12f;
     public float PlayerJumpHeight = 12.4f;
+    public Animation moving;
 
 
 
@@ -57,6 +58,14 @@ public class KeyboardController : MonoBehaviour
             Vector3 move = Player.right * x + Player.forward * z;
 
             controller.Move(move * PlayerMovementFactor * Time.deltaTime);
+        if (Input.GetKey(KeyCode.W)|| Input.GetKey(KeyCode.S)|| Input.GetKey(KeyCode.A)|| Input.GetKey(KeyCode.D))
+        {
+            moving.Play();
+        }
+        else
+        {
+            moving.Stop();
+        }
             
 
             velocity.y += GravSystem * Time.deltaTime;

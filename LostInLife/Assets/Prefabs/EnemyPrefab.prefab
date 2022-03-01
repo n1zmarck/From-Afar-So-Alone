@@ -389,6 +389,7 @@ MonoBehaviour:
   manager: {fileID: 1296826126892585034, guid: 5146c78dd601b8442a24606602294b0b, type: 3}
   currentPos: {fileID: 5215102627353058729}
   DestinationBeacon: {fileID: 5576084116105324593}
+  destinationSet: 0
 --- !u!114 &4794323126382575700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -417,6 +418,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 7254564085056136447, guid: 230e23bfa24a2c74aa5a7979a4e042b2, type: 3}
   navMesh: {fileID: 3071882357442135337}
+  state: 0
 --- !u!114 &7271112718462837457
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -454,7 +456,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5576084116105324593}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.11, z: 0}
+  m_LocalPosition: {x: 0, y: 1.11, z: 1.33}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5215102627353058729}
@@ -515,6 +517,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: fcb334eb247ae3e488abb081c847cf09, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: c10bdf35be0b20349bfd7f19d885c5ff, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fcb334eb247ae3e488abb081c847cf09, type: 3}
 --- !u!1 &5215102627352822217 stripped

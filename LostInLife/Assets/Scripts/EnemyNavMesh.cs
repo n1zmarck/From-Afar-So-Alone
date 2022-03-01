@@ -25,15 +25,12 @@ public class EnemyNavMesh : MonoBehaviour
 
     private void Awake()
     {
-        navAgent = GetComponent<NavMeshAgent>();
+        if (navAgent != null)
+        {
+            navAgent = GetComponent<NavMeshAgent>();            
+        }
+
     }
 
-    private void Update()
-    {
-        if (stopMoving == false)
-        {
-            navAgent.speed = self.getSpeed(navAgent.speed);
-            navAgent.destination = moveDestination.position;
-        }
-    }
+   
 }

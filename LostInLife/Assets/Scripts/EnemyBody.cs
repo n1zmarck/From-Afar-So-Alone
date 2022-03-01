@@ -42,7 +42,7 @@ public class EnemyBody : EnemyManager
         manager.enemyBodies.Add(this);
         startpos = this.transform.position;
         //enemynavmesh.SetDestination(getRoamingPos());
-        destinationSet = false;
+        //destinationSet = true;
     }
 
     private void Update()

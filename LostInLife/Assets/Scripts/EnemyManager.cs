@@ -17,7 +17,7 @@ public class EnemyManager : MonoBehaviour
 
     public Vector3 getRoamingPos(Vector3 startpos)
     {
-        return startpos + GetRandomdirec() * Random.Range(10f, 30f);
+        return startpos + GetRandomdirec() * Random.Range(1f, 5f);
     }
     public Vector3 GetRandomdirec()
     {
@@ -39,13 +39,16 @@ public class EnemyManager : MonoBehaviour
             }
             //if close to player distance and facing them, switch state to chase and attack
             enemy.currentPos = enemy.transform;
-            if (enemy.currentPos == enemy.enemynavmesh.moveDestination && enemy.destinationSet == false)
+            if (enemy.destinationSet == false)
             {
                 Vector3 temp = getRoamingPos(enemy.currentPos.position);
                 Debug.Log(temp);
+                temp.y = 0.0f;
                 enemy.enemynavmesh.SetDestination(temp);
+                enemy.enemynavmesh.navAgent.SetDestination(enemy.enemynavmesh.moveDestination.position);
+                enemy.destinationSet = true;
 
-            }
+            }// if enemy close to beacon change beacon position.
             //if (enemy.enemynavmesh.moveDestination == null)
             //{
             //    enemy.DestinationBeacon.transform.position = getRoamingPos(enemy.currentPos.position);
