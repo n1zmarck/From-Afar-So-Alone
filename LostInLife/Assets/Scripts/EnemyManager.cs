@@ -7,7 +7,11 @@ public class EnemyManager : MonoBehaviour
     public List<EnemyBody> enemyBodies;
     private int numberofBodiesinlevel = 0;
     public Transform playerCurrentPos;
+    public float stopChasingDistance = 150f;
     // Start is called before the first frame update
+
+
+
     void Awake()
     {
         //enemyBodies.Add(FindObjectOfType<EnemyBody>);
@@ -45,20 +49,40 @@ public class EnemyManager : MonoBehaviour
                 Debug.Log(temp);
                 temp.y = 0.0f;
                 enemy.enemynavmesh.SetDestination(temp);
-                enemy.enemynavmesh.navAgent.SetDestination(enemy.enemynavmesh.moveDestination.position);
+                enemy.enemynavmesh.navAgent.SetDestination(enemy.enemynavmesh.moveDestination.transform.position);
                 enemy.destinationSet = true;
 
-            }// if enemy close to beacon change beacon position.
-            //if (enemy.enemynavmesh.moveDestination == null)
-            //{
-            //    enemy.DestinationBeacon.transform.position = getRoamingPos(enemy.currentPos.position);
-            //    enemy.enemynavmesh.SetDestination(getRoamingPos(enemy.currentPos.position));
-            //    enemy.enemynavmesh.navAgent.speed = (enemy.enemy.getSpeed(enemy.enemy.health));
-            //}
+            }
             //set random interval and play random voiceLine
+            if (Vector3.Distance(enemy.currentPos.position,enemy.enemynavmesh.moveDestination.transform.position) < 20.0f)
+            {
 
+                enemy.enemynavmesh.SetDestination(getRoamingPos(enemy.enemynavmesh.moveDestination.transform.position));
 
-            //debugtool
+            }
+
+            if (enemy.aI.state == EnemyAI.State.Roaming && Vector3.Distance(enemy.currentPos.position,playerCurrentPos.position) <= 100f)
+            {
+                enemy.aI.state = EnemyAI.State.ChaseTarget;
+            }
+            if (enemy.aI.state == EnemyAI.State.ChaseTarget && Vector3.Distance(enemy.currentPos.position,playerCurrentPos.position) <= enemy.fireRange)
+            {
+                enemy.aI.state = EnemyAI.State.ShootingTarget;
+            }
+            if (enemy.aI.state == EnemyAI.State.ShootingTarget && Vector3.Distance(enemy.currentPos.position, playerCurrentPos.position) >= enemy.fireRange)
+            {
+
+                enemy.aI.state = EnemyAI.State.ChaseTarget;
+                if (Vector3.Distance(enemy.currentPos.position, playerCurrentPos.transform.position) > stopChasingDistance)
+                {
+                    // Too far, stop chasing
+                    // resume to roaming area.
+                    enemy.aI.state = EnemyAI.State.Roaming;
+                }
+
+            }
         }
     }
+
+
 }

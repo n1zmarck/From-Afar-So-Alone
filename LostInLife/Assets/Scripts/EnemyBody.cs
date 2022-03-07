@@ -10,7 +10,11 @@ public class EnemyBody : EnemyManager
     public EnemyManager manager;
     public Transform currentPos;
     public GameObject DestinationBeacon;
+    public EnemyAI aI;
     public bool destinationSet;
+
+
+    public float fireRange = 50f;
 
     private Vector3 startpos;
     private Vector3 roamPos;
@@ -31,6 +35,7 @@ public class EnemyBody : EnemyManager
         GetComponent<Enemy>();
         GetComponent<EnemyNavMesh>();
         GetComponent<EnemyManager>();
+        GetComponent<EnemyAI>();
         
         body = this.transform.gameObject;
         //DestinationBeacon.transform.position = currentPos.position;

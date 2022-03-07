@@ -22,6 +22,8 @@ public class EnemyAI : MonoBehaviour {
     private Vector3 roamPosition;
     private float nextShootTime;
     public State state;
+    public Animator animator;
+
 
     private void Awake() {
         //pathfindingMovement = GetComponent<EnemyPathfindingMovement>();
@@ -32,30 +34,23 @@ public class EnemyAI : MonoBehaviour {
 
     private void Start() {
         startingPosition = transform.position;
-        navMesh.SetDestination(GetRoamingPosition());
+        
     }
 
     private void Update() {
         switch (state) {
         default:
         case State.Roaming:
-            //pathfindingMovement.MoveToTimer(roamPosition);
 
-            float reachedPositionDistance = 10f;
-            if (Vector3.Distance(transform.position, roamPosition) < reachedPositionDistance) {
-                // Reached Roam Position
-                roamPosition = GetRoamingPosition();
-                    navMesh.SetDestination(roamPosition);
-            }
 
-            FindTarget();
-            break;
+                //FindTarget();
+                animator.Play("demo_combat_run");
+            
+                
+                break;
         case State.ChaseTarget:
-                //pathfindingMovement.MoveToTimer(Player.transform.position);
-                navMesh.SetDestination(Player.transform.position);
-           // aimShootAnims.SetAimTarget(Player.Instance.GetPosition());
 
-
+                
             float attackRange = 30f;
             if (Vector3.Distance(transform.position, Player.transform.position) < attackRange) {
                 // Target within attack range
@@ -68,20 +63,14 @@ public class EnemyAI : MonoBehaviour {
                 }
             }
 
-            float stopChaseDistance = 80f;
-            if (Vector3.Distance(transform.position, Player.transform.position) > stopChaseDistance) {
-                // Too far, stop chasing
-                state = State.ChaseTarget;
-            }
+
             break;
         case State.ShootingTarget:
+
+                animator.Play("demo_combat_shoot");
             break;
 
         }
-    }
-
-    private Vector3 GetRoamingPosition() {
-        return startingPosition + throwRandom() * Random.Range(10f, 70f);
     }
 
     private void FindTarget() {

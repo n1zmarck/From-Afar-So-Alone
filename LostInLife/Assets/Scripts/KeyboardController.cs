@@ -18,6 +18,8 @@ public class KeyboardController : MonoBehaviour
     private float DefaultMovementFactor = 12f;
     public float PlayerJumpHeight = 12.4f;
     public Animation moving;
+    public PauseMenu PauseMenu;
+    public Weapon weaponClick;
 
 
 
@@ -25,32 +27,34 @@ public class KeyboardController : MonoBehaviour
 
     private void Start()
     {
+        GetComponent<PauseMenu>();
         defaultHeight = controller.height;
     }
 
 
     void Update()
     {
+        if (PauseMenu.isGamePaused == false)
+        {
+            isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundmask);
 
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundmask);
+            if (isGrounded == true && velocity.y < 0)
+            {
+                velocity.y = -1f;
+            }
+            if (isGrounded == true && Input.GetKey(KeyCode.LeftControl))
+            {
+                controller.height = controller.height / 2;
+                controller.center = new Vector3(0, -controller.height, 0);
+                PlayerMovementFactor = 6f;
+            }
+            else if (isGrounded == true && Input.GetKeyUp(KeyCode.LeftControl))
+            {
+                controller.center = new Vector3(0, controller.height, 0);
+                controller.height = defaultHeight;
+                PlayerMovementFactor = DefaultMovementFactor;
+            }
 
-        if (isGrounded == true && velocity.y < 0)
-        {
-            velocity.y = -1f;
-        }
-        if (isGrounded == true && Input.GetKey(KeyCode.LeftControl))
-        {
-            controller.height = controller.height / 2;
-            controller.center = new Vector3(0,-controller.height,0);
-            PlayerMovementFactor = 6f;
-        }
-        else if (isGrounded == true && Input.GetKeyUp(KeyCode.LeftControl))
-        {
-            controller.center = new Vector3(0,controller.height,0);
-            controller.height = defaultHeight;
-            PlayerMovementFactor = DefaultMovementFactor;
-        }
-        
             float x = Input.GetAxis("Horizontal");
             float z = Input.GetAxis("Vertical");
 
@@ -58,18 +62,26 @@ public class KeyboardController : MonoBehaviour
             Vector3 move = Player.right * x + Player.forward * z;
 
             controller.Move(move * PlayerMovementFactor * Time.deltaTime);
-        if (Input.GetKey(KeyCode.W)|| Input.GetKey(KeyCode.S)|| Input.GetKey(KeyCode.A)|| Input.GetKey(KeyCode.D))
-        {
-            moving.Play();
+            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+            {
+                moving.Play();
+            }
+            else
+            {
+                moving.Stop();
+            }
+
+
+            velocity.y += GravSystem * Time.deltaTime;
         }
         else
         {
-            moving.Stop();
+            weaponClick.isGamePaused = true;
         }
-            
 
-            velocity.y += GravSystem * Time.deltaTime;
-            //controller.Move(velocity * Time.deltaTime);
+
+      
+
 
         
 
