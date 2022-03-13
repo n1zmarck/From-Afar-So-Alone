@@ -17,7 +17,7 @@ public class KeyboardController : MonoBehaviour
     private float PlayerMovementFactor = 12f;
     private float DefaultMovementFactor = 12f;
     public float PlayerJumpHeight = 12.4f;
-    public Animation moving;
+    public Animator animator;
     public PauseMenu PauseMenu;
     public Weapon weaponClick;
 
@@ -55,6 +55,22 @@ public class KeyboardController : MonoBehaviour
                 PlayerMovementFactor = DefaultMovementFactor;
             }
 
+
+            if (Input.GetKey(KeyCode.Mouse1) == true && Camera.current.fieldOfView == 60f)
+            {
+                Camera.current.fieldOfView = 30f;
+            }else if (Input.GetKey(KeyCode.Mouse1) == true && Camera.current.fieldOfView == 30f)
+            {
+                Camera.current.fieldOfView = 60f;
+            }
+
+
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                animator.Play("Shooting");
+            }
+
+
             float x = Input.GetAxis("Horizontal");
             float z = Input.GetAxis("Vertical");
 
@@ -64,15 +80,18 @@ public class KeyboardController : MonoBehaviour
             controller.Move(move * PlayerMovementFactor * Time.deltaTime);
             if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
             {
-                moving.Play();
+                animator.Play("Running");
             }
             else
             {
-                moving.Stop();
+                animator.Play("Idle");
             }
 
 
+
             velocity.y += GravSystem * Time.deltaTime;
+
+           
         }
         else
         {

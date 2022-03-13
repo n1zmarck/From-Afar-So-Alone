@@ -10323,6 +10323,10 @@ PrefabInstance:
       propertyPath: shotgun
       value: 
       objectReference: {fileID: 1901191850}
+    - target: {fileID: 7254564084127835091, guid: 230e23bfa24a2c74aa5a7979a4e042b2, type: 3}
+      propertyPath: field of view
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 7254564084127835092, guid: 230e23bfa24a2c74aa5a7979a4e042b2, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.834

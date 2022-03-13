@@ -58,13 +58,13 @@ public class EnemyAI : MonoBehaviour {
                         // pathfindingMovement.StopMoving();
                         navMesh.stopMovingAgent();
                     state = State.ShootingTarget;
-                    float fireRate = .15f;
+                    float fireRate = .25f;
                     nextShootTime = Time.time + fireRate;
                 }
             }
 
-
-            break;
+       
+                    break;
         case State.ShootingTarget:
 
                 animator.Play("demo_combat_shoot");

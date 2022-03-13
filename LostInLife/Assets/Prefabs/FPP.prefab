@@ -45,11 +45,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e931e42551d03104bb131341ea69c1d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DmrReserve: 0
+  SgReserve: 0
   DMRMag: 0
   SGMag: 0
   currentWeapon: 0
+  isGamePaused: 0
   shotgun: {fileID: 0}
   Rifle: {fileID: 0}
+  hudDisplay: {fileID: 0}
   DMR: {fileID: 0}
   SG: {fileID: 0}
 --- !u!1 &7254564084127835089
@@ -155,6 +159,7 @@ MonoBehaviour:
   pausemenu: {fileID: 7060349931001186748, guid: 9a80c0c067b8b984ea60c85082da8560, type: 3}
   settingsmenu: {fileID: 367439306966713992, guid: d834b6a9f765ebe4e8d3b811ab075282, type: 3}
   playerBody: {fileID: 7254564085056136385}
+  pause: {fileID: 0}
 --- !u!114 &7254564084127835094
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -175,7 +180,9 @@ MonoBehaviour:
     m_Bits: 8
   Player: {fileID: 7254564085056136385}
   PlayerJumpHeight: 2.4
-  moving: {fileID: 0}
+  animator: {fileID: 9193246162338645623}
+  PauseMenu: {fileID: 966265384571472547}
+  weaponClick: {fileID: 7209690835881304348}
 --- !u!114 &966265384571472547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5297,6 +5304,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7254564085056136385}
     m_Modifications:
+    - target: {fileID: 1852554191936618, guid: c266c61b42ce56a4ca7e9190ef1209e3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1981860918171908, guid: c266c61b42ce56a4ca7e9190ef1209e3, type: 3}
       propertyPath: m_Name
       value: Robot_Soldier_Black
@@ -5345,10 +5356,19 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 95565753606369354, guid: c266c61b42ce56a4ca7e9190ef1209e3, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 9fcb9d23dfa2519449672d3f9dc54c3f, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c266c61b42ce56a4ca7e9190ef1209e3, type: 3}
 --- !u!4 &9139865129392792433 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4555062712112460, guid: c266c61b42ce56a4ca7e9190ef1209e3, type: 3}
+  m_PrefabInstance: {fileID: 9135406875327428157}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &9193246162338645623 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 95565753606369354, guid: c266c61b42ce56a4ca7e9190ef1209e3, type: 3}
   m_PrefabInstance: {fileID: 9135406875327428157}
   m_PrefabAsset: {fileID: 0}

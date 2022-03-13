@@ -9,12 +9,15 @@ public class Weapon : MonoBehaviour
 
     public bool isGamePaused = false;
 
+
     public GameObject shotgun;
     public GameObject Rifle;
 
     public PlayerHudDisplay hudDisplay;
-
+    
     public AudioSource DMR, SG;
+
+    private float nextShootTime ;
 
     public enum weaponType
     {
@@ -90,7 +93,18 @@ public class Weapon : MonoBehaviour
 
             if (Input.GetMouseButtonDown(0))
             {
-                if (currentWeapon == weaponType.AssaultRifle && DMRMag > 0 || currentWeapon == weaponType.Shotgun && SGMag > 0)
+                if (currentWeapon == weaponType.AssaultRifle && DMRMag > 0)
+                {
+                    if (Time.time > nextShootTime) {
+                     
+                        shoot(RangeCalc(currentWeapon));
+                        Debug.Log("fired");
+                        float fireRate = .25f;
+                        nextShootTime = Time.time + fireRate;
+                    }
+
+                }
+                else if (currentWeapon == weaponType.Shotgun && SGMag > 0)
                 {
                     shoot(RangeCalc(currentWeapon));
                     Debug.Log("fired");
