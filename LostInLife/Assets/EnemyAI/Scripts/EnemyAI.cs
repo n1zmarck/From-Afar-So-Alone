@@ -13,6 +13,7 @@ public class EnemyAI : MonoBehaviour {
         Roaming,
         ChaseTarget,
         ShootingTarget,
+        Idle
     }
 
     //   private IAimShootAnims aimShootAnims;
@@ -44,7 +45,7 @@ public class EnemyAI : MonoBehaviour {
 
 
                 //FindTarget();
-                animator.Play("demo_combat_run");
+                animator.Play("Run");
             
                 
                 break;
@@ -67,10 +68,14 @@ public class EnemyAI : MonoBehaviour {
                     break;
         case State.ShootingTarget:
 
-                animator.Play("demo_combat_shoot");
-            break;
+                animator.Play("Shoot");break;
 
+            case State.Idle: animator.Play("Idle");
+                break;
+
+ 
         }
+    
     }
 
     private void FindTarget() {

@@ -118,14 +118,14 @@ public class Weapon : MonoBehaviour
                 Debug.Log("zoomies");
             }
 
-            if (Input.GetKey(KeyCode.R))
+            if (Input.GetKeyDown(KeyCode.R))
             {
                 switch (currentWeapon)
                 {
                     case weaponType.AssaultRifle:
-                        DMRMag += 30; DmrReserve -= 30; hudDisplay.updateText(DMRMag, DmrReserve); break;
+                        if (DmrReserve > 0 && DMRMag < 30 ) { float temp = 30 - DMRMag; DMRMag += temp; DmrReserve -= temp; hudDisplay.updateText(DMRMag, DmrReserve); }; break;
                     case weaponType.Shotgun:
-                        SGMag += 7; SgReserve -= 7; hudDisplay.updateText(SGMag, SgReserve); break;
+                        if (SgReserve > 7 && SGMag < 7) { float temp = 7 - SGMag; SGMag += temp; SgReserve -= temp; hudDisplay.updateText(SGMag, SgReserve); } ; break;
                     case weaponType.Melee:
                         break;
                 }
@@ -164,9 +164,9 @@ public class Weapon : MonoBehaviour
             if (hit.collider.tag == "Head")
             {
                 Debug.Log("HeadShot!");
-                Enemy enemy = hit.transform.gameObject.GetComponentInParent<Enemy>();
+                Enemy enemy = hit.transform.gameObject.GetComponent<Enemy>();
                 //hit.collider.transform.parent.gameObject.SetActive(false);
-                hit.transform.gameObject.GetComponentInParent<Enemy>().TakeDamage(100f);
+                hit.transform.gameObject.GetComponent<Enemy>().TakeDamage(100f);
 
 
                 if (currentWeapon == weaponType.Melee)
@@ -178,7 +178,7 @@ public class Weapon : MonoBehaviour
             {
                 Debug.Log("ChestHit!");
                 //hit.collider.gameObject.SetActive(false);
-                Enemy enemy = hit.transform.gameObject.GetComponentInParent<Enemy>();
+                Enemy enemy = hit.transform.gameObject.GetComponent<Enemy>();
       
                     enemy.TakeDamage(50f);
                 
@@ -192,8 +192,8 @@ public class Weapon : MonoBehaviour
             {
                 Debug.Log("LEGS AND KNEES!");
                 // hit.collider.gameObject.SetActive(false);
-                Enemy enemy = hit.transform.gameObject.GetComponentInParent<Enemy>();
-                hit.transform.gameObject.GetComponentInParent<Enemy>().TakeDamage(25f);
+                Enemy enemy = hit.transform.gameObject.GetComponent<Enemy>();
+                hit.transform.gameObject.GetComponent<Enemy>().TakeDamage(25f);
 
                 if (currentWeapon == weaponType.Melee)
                 {

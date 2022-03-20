@@ -51,7 +51,7 @@ public class Controller : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.Confined;
         }
-        if (pausemenu.isActiveAndEnabled == false && settingsmenu.isActiveAndEnabled == false)
+        else if (pausemenu.isActiveAndEnabled == false && settingsmenu.isActiveAndEnabled == false)
         {
             Cursor.lockState = CursorLockMode.Locked;
         }

@@ -7,7 +7,7 @@ public class EnemyManager : MonoBehaviour
     public List<EnemyBody> enemyBodies;
     private int numberofBodiesinlevel = 0;
     public Transform playerCurrentPos;
-    public float stopChasingDistance = 150f;
+    public float stopChasingDistance = 20f;
     // Start is called before the first frame update
 
 
@@ -35,7 +35,7 @@ public class EnemyManager : MonoBehaviour
             if (enemy.enemy.health <= 0)
             {
                 Debug.Log("Enemy Killed and should despawn");
-
+                enemy.gameObject.SetActive(false);
                 Destroy(enemy.transform.gameObject);
                 //push force for ragdoll
 
@@ -43,10 +43,10 @@ public class EnemyManager : MonoBehaviour
             }
             //if close to player distance and facing them, switch state to chase and attack
             enemy.currentPos = enemy.transform;
-            if (enemy.destinationSet == false)
+            if (enemy.destinationSet == false )
             {
                 Vector3 temp = getRoamingPos(enemy.currentPos.position);
-                Debug.Log(temp);
+                Debug.Log(temp + enemy.currentPos.ToString());
                 temp.y = 0.0f;
                 enemy.enemynavmesh.SetDestination(temp);
                 enemy.enemynavmesh.navAgent.SetDestination(enemy.enemynavmesh.moveDestination.transform.position);
@@ -54,7 +54,7 @@ public class EnemyManager : MonoBehaviour
 
             }
             //set random interval and play random voiceLine
-            if (Vector3.Distance(enemy.currentPos.position,enemy.enemynavmesh.moveDestination.transform.position) < 20.0f)
+            if (Vector3.Distance(enemy.currentPos.position,enemy.enemynavmesh.moveDestination.transform.position) < 1.0f)
             {
 
                 enemy.enemynavmesh.SetDestination(getRoamingPos(enemy.enemynavmesh.moveDestination.transform.position));
@@ -80,6 +80,10 @@ public class EnemyManager : MonoBehaviour
                     enemy.aI.state = EnemyAI.State.Roaming;
                 }
 
+            }
+            if (Vector3.Distance(enemy.currentPos.position, enemy.DestinationBeacon.transform.position) <= 3.0f)
+            {
+                enemy.aI.state = EnemyAI.State.Idle;
             }
         }
     }

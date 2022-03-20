@@ -6,6 +6,7 @@ public class Enemy : MonoBehaviour
 {
     public float health = 100f;
 
+    float temp = 100;
     public void TakeDamage (float amount)
     {
         health -= amount;
@@ -26,6 +27,15 @@ public class Enemy : MonoBehaviour
         return input;
     }
 
+    private void Update()
+    {
 
+        if (health - temp < 0 )
+        {
+
+            Debug.Log("current health = " + health.ToString());
+            temp = health;
+        }
+    }
 
 }

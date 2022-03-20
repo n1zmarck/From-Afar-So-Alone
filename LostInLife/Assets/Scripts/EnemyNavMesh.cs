@@ -25,10 +25,7 @@ public class EnemyNavMesh : MonoBehaviour
 
     private void Awake()
     {
-        if (navAgent != null)
-        {
-            navAgent = GetComponent<NavMeshAgent>();            
-        }
+        GetComponent<NavMeshAgent>();
 
     }
 
