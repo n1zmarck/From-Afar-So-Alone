@@ -31,6 +31,7 @@ public class EnemyAI : MonoBehaviour {
         navMesh = GetComponent<EnemyNavMesh>();
        // aimShootAnims = GetComponent<IAimShootAnims>();
         state = State.Roaming;
+        Player = GameObject.FindGameObjectWithTag("Player");
     }
 
     private void Start() {
@@ -38,7 +39,9 @@ public class EnemyAI : MonoBehaviour {
         
     }
 
-    private void Update() {
+    private void FixedUpdate() {
+
+
         switch (state) {
         default:
         case State.Roaming:
