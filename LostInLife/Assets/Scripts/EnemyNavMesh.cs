@@ -5,12 +5,12 @@ using UnityEngine.AI;
 
 public class EnemyNavMesh : MonoBehaviour
 {
-    [SerializeField] public GameObject moveDestination;
+    public GameObject moveDestination;
 
     public NavMeshAgent navAgent;
     public float speed;
     private bool stopMoving = false;
-    private Enemy self;
+    //private Enemy self;
 
     public void stopMovingAgent()
     {
@@ -26,7 +26,8 @@ public class EnemyNavMesh : MonoBehaviour
     private void Awake()
     {
         GetComponent<NavMeshAgent>();
-
+        GetComponent<GameObject>();
+        
     }
 
    

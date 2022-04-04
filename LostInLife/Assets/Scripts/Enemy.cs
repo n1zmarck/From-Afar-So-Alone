@@ -27,15 +27,12 @@ public class Enemy : MonoBehaviour
         return input;
     }
 
-    private void Update()
+    private void Death()
     {
-
-        if (health - temp < 0 )
-        {
-
-            Debug.Log("current health = " + health.ToString());
-            temp = health;
-        }
+        Destroy(this.transform.gameObject);
     }
+
+
+
 
 }

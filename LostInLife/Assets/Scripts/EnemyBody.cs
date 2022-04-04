@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyBody : MonoBehaviour
 {
-    public Enemy enemy;
+    //public Enemy enemy;
     public EnemyNavMesh enemynavmesh;
     public GameObject body;
     // public EnemyManager manager;
@@ -34,7 +34,6 @@ public class EnemyBody : MonoBehaviour
     {
         GetComponent<Enemy>();
         GetComponent<EnemyNavMesh>();
-        GetComponent<EnemyManager>();
         GetComponent<EnemyAI>();
         
         body = this.transform.gameObject;
@@ -45,29 +44,31 @@ public class EnemyBody : MonoBehaviour
     {
         //manager.enemyBodies.Add(this);
         startpos = this.transform.position;
-        enemynavmesh.SetDestination(getRoamingPos(currentPos.position));
+        enemynavmesh.SetDestination(DestinationBeacon.transform.position);
         destinationSet = true;
+        //playerCurrentPos = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
+        currentPos = this.transform;
+        playerCurrentPos = GameObject.FindGameObjectWithTag("Player").transform;
 
-   
         //if (Vector3.Distance (transform.position, DestinationBeacon.transform.position) < 5f)
         //{
         //    //destinationSet = false;
         //}
         currentPos = this.transform;
-        if (destinationSet == false)
-        {
-            Vector3 temp = getRoamingPos(currentPos.position);
-            Debug.Log(temp.ToString() + currentPos.ToString());
-            temp.y = 0.0f;
-            enemynavmesh.SetDestination(temp);
-            enemynavmesh.navAgent.SetDestination(enemynavmesh.moveDestination.transform.position);
-            destinationSet = true;
+        //if (destinationSet == false)
+        //{
+        //    Vector3 temp = getRoamingPos(currentPos.position);
+        //    Debug.Log(temp.ToString() + currentPos.ToString());
+        //    temp.y = 0.0f;
+        //    enemynavmesh.SetDestination(temp);
+        //    enemynavmesh.navAgent.SetDestination(enemynavmesh.moveDestination.transform.position);
+        //    destinationSet = true;
 
-        }
+        //}
         //set random interval and play random voiceLine
         if (Vector3.Distance(currentPos.position, enemynavmesh.moveDestination.transform.position) < 0.0f)
         {

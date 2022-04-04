@@ -54,6 +54,7 @@ public class KeyboardController : MonoBehaviour
                 controller.height = defaultHeight;
                 PlayerMovementFactor = DefaultMovementFactor;
             }
+            // probable cause
 
 
             if (Input.GetKey(KeyCode.Mouse1) == true && Camera.current.fieldOfView == 60f)
@@ -77,6 +78,7 @@ public class KeyboardController : MonoBehaviour
 
             Vector3 move = Player.right * x + Player.forward * z;
 
+
             controller.Move(move * PlayerMovementFactor * Time.deltaTime);
             if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
             {
@@ -89,7 +91,7 @@ public class KeyboardController : MonoBehaviour
 
 
 
-            velocity.y += GravSystem * Time.deltaTime;
+           
 
            
         }
@@ -99,10 +101,10 @@ public class KeyboardController : MonoBehaviour
         }
 
 
-      
+        velocity.y += GravSystem * Time.deltaTime;
+        //problematic
 
 
-        
 
 
     }

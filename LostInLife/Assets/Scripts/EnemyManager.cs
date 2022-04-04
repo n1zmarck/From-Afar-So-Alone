@@ -32,15 +32,15 @@ public class EnemyManager : MonoBehaviour
     {
         foreach (var enemy in enemyBodies)
         {
-            if (enemy.enemy.health <= 0)
-            {
-                Debug.Log("Enemy Killed and should despawn");
-                enemy.gameObject.SetActive(false);
-                Destroy(enemy.transform.gameObject);
-                //push force for ragdoll
+            //if (enemy.enemy.health <= 0)
+            //{
+            //    Debug.Log("Enemy Killed and should despawn");
+            //    enemy.gameObject.SetActive(false);
+            //    Destroy(enemy.transform.gameObject);
+            //    //push force for ragdoll
 
-                enemyBodies.Remove(enemy);
-            }
+            //    enemyBodies.Remove(enemy);
+            //}
             //if close to player distance and facing them, switch state to chase and attack
             enemy.currentPos = enemy.transform;
             if (enemy.destinationSet == false )
