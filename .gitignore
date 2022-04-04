@@ -59,3 +59,25 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+LostInLife/Logs/AssetImportWorker0-prev.log
+LostInLife/Logs/AssetImportWorker0.log
+LostInLife/Logs/AssetImportWorker1-prev.log
+LostInLife/Logs/AssetImportWorker1.log
+LostInLife/Logs/AssetImportWorker2-prev.log
+LostInLife/Logs/AssetImportWorker3-prev.log
+LostInLife/Logs/AssetImportWorker4-prev.log
+LostInLife/Logs/AssetImportWorker5-prev.log
+LostInLife/Logs/AssetImportWorker6-prev.log
+LostInLife/Logs/shadercompiler-AssetImportWorker0.log
+LostInLife/Logs/shadercompiler-UnityShaderCompiler.exe1.log
+LostInLife/Logs/shadercompiler-UnityShaderCompiler.exe10.log
+LostInLife/Logs/shadercompiler-UnityShaderCompiler.exe11.log
+LostInLife/Logs/shadercompiler-UnityShaderCompiler.exe2.log
+LostInLife/Logs/shadercompiler-UnityShaderCompiler.exe3.log
+LostInLife/Logs/shadercompiler-UnityShaderCompiler.exe4.log
+LostInLife/Logs/shadercompiler-UnityShaderCompiler.exe5.log
+LostInLife/Logs/shadercompiler-UnityShaderCompiler.exe6.log
+LostInLife/Logs/shadercompiler-UnityShaderCompiler.exe7.log
+LostInLife/Logs/shadercompiler-UnityShaderCompiler.exe8.log
+LostInLife/Logs/shadercompiler-UnityShaderCompiler.exe9.log
+*.log
