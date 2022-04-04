@@ -1,20 +1,21 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
-    - Controller
-    - Enemy
+    - BulletScript
+    - DestroyAfterTimeParticle
     - EnemyAI
     - EnemyBody
-    - EnemyManager
     - EnemyNavMesh
-    - KeyboardController
+    - GunInventory
+    - GunScript
     - MainMenu
-    - MobLook
     - MobRun
+    - MouseLookScript
     - PauseMenu
     - PlayerHudDisplay
+    - PlayerMovementScript
+    - RagdollDeath
     - SettingsMenu
-    - Weapon
     - mobshoot
     - sceneManagement
     Unity.Rider.Editor.dll:
@@ -63,7 +64,21 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 64
       Script: {instanceID: 0}
+    - Class: 65
+      Script: {instanceID: 0}
+    - Class: 74
+      Script: {instanceID: 0}
     - Class: 81
+      Script: {instanceID: 0}
+    - Class: 82
+      Script: {instanceID: 0}
+    - Class: 83
+      Script: {instanceID: 0}
+    - Class: 90
+      Script: {instanceID: 0}
+    - Class: 91
+      Script: {instanceID: 0}
+    - Class: 95
       Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
@@ -72,22 +87,30 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1626}
     - Class: 114
-      Script: {instanceID: 2682}
+      Script: {instanceID: 2684}
     - Class: 114
-      Script: {instanceID: 2896}
+      Script: {instanceID: 2898}
     - Class: 114
-      Script: {instanceID: 3166}
+      Script: {instanceID: 3170}
     - Class: 114
-      Script: {instanceID: 5414}
+      Script: {instanceID: 3208}
     - Class: 114
-      Script: {instanceID: 5714}
+      Script: {instanceID: 3290}
     - Class: 114
-      Script: {instanceID: 6102}
+      Script: {instanceID: 4446}
     - Class: 114
-      Script: {instanceID: 6204}
+      Script: {instanceID: 5428}
+    - Class: 114
+      Script: {instanceID: 5728}
+    - Class: 114
+      Script: {instanceID: 6116}
+    - Class: 114
+      Script: {instanceID: 6218}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
+      Script: {instanceID: 0}
+    - Class: 137
       Script: {instanceID: 0}
     - Class: 157
       Script: {instanceID: 0}
@@ -146,6 +169,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 95
       Script: {instanceID: 0}
+    - Class: 102
+      Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
     - Class: 108
@@ -155,56 +180,60 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1626}
     - Class: 114
-      Script: {instanceID: 1670}
+      Script: {instanceID: 1714}
     - Class: 114
-      Script: {instanceID: 1712}
+      Script: {instanceID: 2684}
     - Class: 114
-      Script: {instanceID: 1792}
+      Script: {instanceID: 2726}
     - Class: 114
-      Script: {instanceID: 2598}
+      Script: {instanceID: 2898}
     - Class: 114
-      Script: {instanceID: 2682}
+      Script: {instanceID: 3100}
     - Class: 114
-      Script: {instanceID: 2724}
+      Script: {instanceID: 3170}
     - Class: 114
-      Script: {instanceID: 2896}
+      Script: {instanceID: 3908}
     - Class: 114
-      Script: {instanceID: 3156}
+      Script: {instanceID: 4420}
     - Class: 114
-      Script: {instanceID: 3166}
+      Script: {instanceID: 4446}
     - Class: 114
-      Script: {instanceID: 4410}
+      Script: {instanceID: 5020}
     - Class: 114
-      Script: {instanceID: 5072}
+      Script: {instanceID: 5086}
     - Class: 114
-      Script: {instanceID: 5092}
+      Script: {instanceID: 5106}
     - Class: 114
-      Script: {instanceID: 5128}
+      Script: {instanceID: 5142}
     - Class: 114
-      Script: {instanceID: 5188}
+      Script: {instanceID: 5428}
     - Class: 114
-      Script: {instanceID: 5414}
+      Script: {instanceID: 5728}
     - Class: 114
-      Script: {instanceID: 5710}
+      Script: {instanceID: 6218}
     - Class: 114
-      Script: {instanceID: 5714}
+      Script: {instanceID: 6534}
     - Class: 114
-      Script: {instanceID: 6204}
+      Script: {instanceID: 6576}
     - Class: 114
-      Script: {instanceID: 6560}
+      Script: {instanceID: 7030}
     - Class: 114
-      Script: {instanceID: 7014}
+      Script: {instanceID: 7720}
     - Class: 114
-      Script: {instanceID: 7704}
-    - Class: 114
-      Script: {instanceID: 33982}
+      Script: {instanceID: 40490}
     - Class: 115
+      Script: {instanceID: 0}
+    - Class: 124
       Script: {instanceID: 0}
     - Class: 128
       Script: {instanceID: 0}
+    - Class: 135
+      Script: {instanceID: 0}
+    - Class: 136
+      Script: {instanceID: 0}
     - Class: 137
       Script: {instanceID: 0}
-    - Class: 143
+    - Class: 144
       Script: {instanceID: 0}
     - Class: 157
       Script: {instanceID: 0}
@@ -251,6 +280,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Controller
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: EnemyPathfindingMovement
   - hash:
       serializedVersion: 2
       Hash: 4da610d00ddd63f4b892b886fa4ddf50
@@ -523,6 +558,12 @@ ScriptsOnlyBuild:
     className: UnityOnDropdownValueChangedMessageListener
   - hash:
       serializedVersion: 2
+      Hash: 0607f947f7499a003686d1dcfb336646
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PlayerMovementScript
+  - hash:
+      serializedVersion: 2
       Hash: 86720e9c0daa2ab0198716c6f2278980
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -553,6 +594,12 @@ ScriptsOnlyBuild:
     className: BloomAndFlares
   - hash:
       serializedVersion: 2
+      Hash: 1bbef1ee5f4f3536531d8519057f903b
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: BulletScript
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Unity.VisualScripting.Core.dll
     namespaceName: Unity.VisualScripting
@@ -569,6 +616,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core.dll
     namespaceName: Unity.VisualScripting
     className: UnityOnMouseDragMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 25746cd67f9be6d0e95b7efd4dc98e97
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: GunScript
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -703,6 +756,12 @@ ScriptsOnlyBuild:
     className: UnityOnPointerExitMessageListener
   - hash:
       serializedVersion: 2
+      Hash: 84d6965e5ec08ce30b25d8fabf3c4897
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: MouseLookScript
+  - hash:
+      serializedVersion: 2
       Hash: aba7b2852ef61d175dd9602e7723d5e5
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -811,6 +870,12 @@ ScriptsOnlyBuild:
     className: PlayerHudDisplay
   - hash:
       serializedVersion: 2
+      Hash: 2877c7b19b606abc948d13be795ad409
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: DestroyAfterTimeParticle
+  - hash:
+      serializedVersion: 2
       Hash: fd68d84f33fad85aac38f2739c0ee270
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
@@ -895,6 +960,12 @@ ScriptsOnlyBuild:
     className: TMP_InputField
   - hash:
       serializedVersion: 2
+      Hash: 9877a79bf1c2bb5e2c222fa64001680d
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: GunInventory
+  - hash:
+      serializedVersion: 2
       Hash: 172cfdd977ca8a6f32932932c2f0d2ee
     assemblyName: Assembly-CSharp-firstpass.dll
     namespaceName: UnityStandardAssets.ImageEffects
@@ -937,7 +1008,7 @@ ScriptsOnlyBuild:
     className: UnityOnCollisionEnter2DMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 8a85ee8cc94f5929a876e58f709bc4ef
+      Hash: 472308d7cc17b3ae9cea1fdbbfeb83be
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: EnemyBody
@@ -1133,6 +1204,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp-firstpass.dll
     namespaceName: UnityStandardAssets.ImageEffects
     className: ImageEffectBase
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: sceneManagement
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -1405,12 +1482,12 @@ ScriptsOnlyBuild:
     className: UnityOnSliderValueChangedMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: 30f3213a6e218a461fa00e428f22d3eb
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: sceneManagement
+    className: RagdollDeath
   platform: 19
   scenePathNames:
   - Assets/Scenes/Main Menu.unity
   - Assets/Scenes/SampleScene.unity
-  playerPath: D:/OneDrive/Desktop/Beta21/From Afar So Alone.exe
+  playerPath: D:/OneDrive/Desktop/Beta30/From Afar So Alone.exe
